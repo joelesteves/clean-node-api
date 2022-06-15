@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:staged": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint 'src/**' --fix"
   },
   "repository": {
     "type": "git",
