@@ -13,7 +13,7 @@ export class SignUpController implements Controller {
   }
 
   handle (httpRequest: HttpRequest): HttpResponse | any {
-    const requeredFields = ['name', 'email', 'password']
+    const requeredFields = ['name', 'email', 'password', 'passwordConfirmation']
 
     for (const field of requeredFields) {
       if (!httpRequest.body[field]) {
