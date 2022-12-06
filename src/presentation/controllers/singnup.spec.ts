@@ -54,7 +54,7 @@ describe('', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('email'))
   })
 
-  test('should return 400 if no password provided', () => {
+  test('should return 400 if no password is provided', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -66,6 +66,21 @@ describe('', () => {
     const httpResponse = sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new MissingParamError('password'))
+  })
+
+  test('should return 400 if password confirmation fails', () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'any@email.com',
+        password: 'anypassword',
+        passwordConfirmation: 'invalidpassword'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new InvalidParamError('passwordConfirmation'))
   })
 
   test('should return 400 if no confirmation password password provided', () => {
