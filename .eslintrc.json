@@ -5,6 +5,6 @@
     },
     "rules": {
         "@typescript-eslint/strict-boolean-expressions": "off",
-        "prefer-method-signature": true
+        // "prefer-method-signature": true
     }
 }
